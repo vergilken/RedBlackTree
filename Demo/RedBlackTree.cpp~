@@ -114,7 +114,8 @@ void RedBlackTree :: initialize(const char * file)
         if ( !fin )
         {
             cout<<"The file does not exist."<<endl;
-	    exit (1);
+
+            exit(1);
         }
         long idata;
         int idata1;

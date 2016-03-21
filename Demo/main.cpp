@@ -1,6 +1,6 @@
 #include "RedBlackTree.h"
 
- using namespace std;
+using namespace std;
 
   int main(int argc, const char *argv[])
 {
@@ -20,14 +20,14 @@
   if ( !fin )
  {
    cout<<"The command file does not exist."<<endl;
-    return 0;
-        }
-string str;
-long a,c = 0;
-int b =0;
+   return 0;
+ }
+  string str;
+  long a,c = 0;
+  int b =0;
 
-while ( !fin.eof() )
-{
+  while ( !fin.eof() )
+  {
     fin >> str;
     if ( str == "increase"  )
     {
@@ -71,7 +71,7 @@ while ( !fin.eof() )
         cin.rdbuf(cinbackup);
 	cout.rdbuf(coutbackup); 
     }
-}
+  }
 
   //myTree.InRange(27,88);
   return 0;
