@@ -13,6 +13,8 @@ class RedBlackTree
 
             void reset();
             void preOrder(RB_Node* node, int index);
+            bool isNullChildNode ( RB_Node * node );
+            bool isNullParentNode ( RB_Node * node );
             void clear( RB_Node* node );
 
             bool Insert(  long _ID, int _count);

@@ -18,3 +18,22 @@
 1458544835 /home/vergilken/codepart/RedBlackTreeQuery/include/RedBlackTree.h
 	"RB_Node.h"
 
+1458549534 source:/home/vergilken/codepart/RedBlackQuery/src/RB_Node.cpp
+	"RB_Node.h"
+
+1458549534 /home/vergilken/codepart/RedBlackQuery/include/RB_Node.h
+	<fstream>
+	<iostream>
+	<vector>
+	<cmath>
+	<string>
+
+1458549534 source:/home/vergilken/codepart/RedBlackQuery/src/RedBlackTree.cpp
+	"RedBlackTree.h"
+
+1458600325 /home/vergilken/codepart/RedBlackQuery/include/RedBlackTree.h
+	"RB_Node.h"
+
+1458599692 source:/home/vergilken/codepart/RedBlackQuery/main.cpp
+	"RedBlackTree.h"
+

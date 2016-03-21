@@ -1,6 +1,6 @@
 #include "RedBlackTree.h"
 
- using namespace std;
+using namespace std;
 
   int main(int argc, const char *argv[])
 {
@@ -8,70 +8,60 @@
   RedBlackTree myTree ;
   myTree.initialize(file1);
 
-  const char * file2= argv[2];
-  ifstream fin (file2);
-  const char * file3 = argv[3];
-  ofstream fout(argv[3]); 
-  streambuf *cinbackup; 
-  streambuf *coutbackup;
-  cinbackup= cin.rdbuf(fin.rdbuf()); 
-  coutbackup = cout.rdbuf(cout.rdbuf());
-
-  if ( !fin )
+  if ( !cin )
  {
    cout<<"The command file does not exist."<<endl;
-    return 0;
-        }
-string str;
-long a,c = 0;
-int b =0;
+   return 0;
+ }
+  string str;
+  long a,c = 0;
+  int b =0;
 
-while ( !fin.eof() )
-{
-    fin >> str;
+  while ( !cin.eof() )
+  {
+    cin >> str;
     if ( str == "increase"  )
     {
-        fin >> a ;
-        fin >> b;
+        cin >> a ;
+        cin >> b;
         myTree.Increase ( a, b);
     }
     else if ( str == "reduce" )
     {
-        fin >> a;
-        fin >> b;
+        cin >> a;
+        cin >> b;
         myTree.Reduce ( a, b );
     }
     else if ( str == "count")
     {
-        fin >> a;
+        cin >> a;
         myTree.Count ( a );
     }
 
     else if ( str == "inrange")
     {
-        fin >> a;
-        fin >> c;
+        cin >> a;
+        cin >> c;
         myTree.InRange ( a, c );
     }
 
     else if ( str == "next")
     {
-        fin >> a;
+        cin >> a;
         myTree.Next( a );
     }
 
     else if ( str == "previous")
     {
-        fin >> a;
+        cin >> a;
         myTree.Previous( a );
     }
 
     else if ( str == "quit" )
     {
-        cin.rdbuf(cinbackup);
-	cout.rdbuf(coutbackup); 
+        return 0;
     }
-}
+  }
 
   //myTree.InRange(27,88);
   return 0;

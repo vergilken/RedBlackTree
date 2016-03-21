@@ -27,6 +27,18 @@ bool RedBlackTree::isLeftSon( RB_Node* node )
   return node -> parent -> left == node ? true : false;
 }
 
+bool RedBlackTree :: isNullChildNode ( RB_Node * node )
+{
+    if ( node ->left == m_nullNode && node -> right == m_nullNode)return true;
+    else  return false;
+}
+
+bool RedBlackTree :: isNullParentNode ( RB_Node * node )
+{
+    if ( node -> parent == m_nullNode )return true;
+    else return false;
+}
+
 
  void RedBlackTree :: clear( RB_Node* node)
  {
@@ -66,7 +78,7 @@ RB_Node* RedBlackTree :: Search( const long _ID)
 
 bool RedBlackTree :: LeftRotate(RB_Node* node)
 {
-  if ( node == m_nullNode && node -> right == m_nullNode) return false;
+  if (  node == m_nullNode || node -> right == m_nullNode) return false;
   RB_Node * z = node -> right;
   z ->parent = node ->parent;
   node -> right = z -> left;
@@ -205,15 +217,16 @@ void RedBlackTree :: InsertFixUp ( RB_Node* node)
 {
     while ( node -> parent -> RB_COLOR == RED )
     {
+       RB_Node* grand = node -> parent -> parent;
        if( isLeftSon( node -> parent ) )
        {
-           RB_Node* uncle = node -> parent -> parent -> right;
+           RB_Node* uncle = grand -> right;
             if ( uncle -> RB_COLOR == RED)
             {
                 node->parent-> RB_COLOR = BLACK;
                 uncle -> RB_COLOR = BLACK ;
                 uncle -> parent -> RB_COLOR = RED;
-                node = node-> parent -> parent;
+                node = grand;
             }
             else if ( uncle -> RB_COLOR == BLACK )
                 {
@@ -225,21 +238,21 @@ void RedBlackTree :: InsertFixUp ( RB_Node* node)
                 else
                 {
                     node -> parent -> RB_COLOR = BLACK;
-                    node -> parent -> parent -> RB_COLOR =RED;
-                    RightRotate( node -> parent -> parent );
+                    grand -> RB_COLOR =RED;
+                    RightRotate( grand );
                 }
             }
        }
 
             else
             {
-                RB_Node* uncle = node -> parent -> parent -> left;
+                RB_Node* uncle = grand -> left;
                 if ( uncle -> RB_COLOR == RED)
                 {
                     node -> parent -> RB_COLOR = BLACK;
                     uncle -> RB_COLOR = BLACK;
                     uncle -> parent -> RB_COLOR = RED;
-                    node = node -> parent -> parent;
+                    node = grand;
                 }
                 else if ( uncle -> RB_COLOR == BLACK )
                 {
@@ -251,8 +264,8 @@ void RedBlackTree :: InsertFixUp ( RB_Node* node)
                     else
                     {
                         node ->parent -> RB_COLOR = BLACK;
-                        node -> parent ->parent -> RB_COLOR = RED;
-                        LeftRotate( node -> parent -> parent );
+                        grand -> RB_COLOR = RED;
+                        LeftRotate( grand );
                     }
                 }
             }
@@ -347,7 +360,7 @@ void RedBlackTree :: DeleteFixUp ( RB_Node * node)
       if( isLeftSon( node ) )
       {
          RB_Node* brother = node -> parent -> right;
-         if ( brother -> RB_COLOR == RED )                                                                                                              //case 1
+         if ( brother -> RB_COLOR == RED )                                                                                                                    //case 1
          {
              brother -> RB_COLOR = BLACK;
              brother -> parent ->RB_COLOR =RED;
@@ -360,13 +373,13 @@ void RedBlackTree :: DeleteFixUp ( RB_Node * node)
                 brother -> RB_COLOR = RED;
                 node = brother -> parent;
             }
-            else if ( brother -> left -> RB_COLOR == RED && brother -> right -> RB_COLOR == BLACK)  //case 3
+            else if ( brother -> left -> RB_COLOR == RED && brother -> right -> RB_COLOR == BLACK)       //case 3
             {
                 brother -> left -> RB_COLOR = BLACK;
                 brother -> RB_COLOR = RED;
                 RightRotate( brother );
             }
-            else if ( brother -> right -> RB_COLOR == RED)                                                                                   //case 4
+            else if ( brother -> right -> RB_COLOR == RED)                                                                                         //case 4
             {
                 brother -> RB_COLOR = brother -> parent ->RB_COLOR ;
                 brother -> parent -> RB_COLOR = BLACK;
