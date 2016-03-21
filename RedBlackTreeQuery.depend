@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1458544745 source:/home/vergilken/codepart/RedBlackTreeQuery/main.cpp
+	"RedBlackTree.h"
+
+1458545666 source:/home/vergilken/codepart/RedBlackTreeQuery/src/RB_Node.cpp
+	"RB_Node.h"
+
+1458548751 /home/vergilken/codepart/RedBlackTreeQuery/include/RB_Node.h
+	<fstream>
+	<iostream>
+	<vector>
+	<cmath>
+	<string>
+
+1458544896 source:/home/vergilken/codepart/RedBlackTreeQuery/src/RedBlackTree.cpp
+	"RedBlackTree.h"
+
+1458544835 /home/vergilken/codepart/RedBlackTreeQuery/include/RedBlackTree.h
+	"RB_Node.h"
+
