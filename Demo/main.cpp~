@@ -2,20 +2,11 @@
 
 using namespace std;
 
- int main(int argc, const char *argv[])
+  int main(int argc, const char *argv[])
 {
   const char* file1 = argv[1];
   RedBlackTree myTree ;
   myTree.initialize(file1);
-
-  const char * file2= argv[2];
-  ifstream fin (file2);
-  const char * file3 = argv[3];
-  ofstream fout(argv[3]); 
-  streambuf *cinbackup; 
-  streambuf *coutbackup;
-  cinbackup= cin.rdbuf(fin.rdbuf()); 
-  coutbackup = cout.rdbuf(cout.rdbuf());
 
   if ( !fin )
  {
@@ -68,8 +59,7 @@ using namespace std;
 
     else if ( str == "quit" )
     {
-        cin.rdbuf(cinbackup);
-	cout.rdbuf(coutbackup); 
+       ;
     }
   }
 
